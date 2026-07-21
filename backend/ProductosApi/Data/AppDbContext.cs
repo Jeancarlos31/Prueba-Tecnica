@@ -20,7 +20,7 @@ public class AppDbContext : DbContext
             entity.Property(p => p.Price).HasColumnType("decimal(18,2)");
         });
 
-        // Datos semilla para poder probar el API/frontend inmediatamente.
+        // datos de prueba
         modelBuilder.Entity<Product>().HasData(
             new Product
             {

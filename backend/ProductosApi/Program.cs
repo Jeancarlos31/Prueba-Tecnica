@@ -3,7 +3,6 @@ using ProductosApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Controladores + Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -16,11 +15,9 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// EF Core + SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// CORS para permitir que el frontend Angular (http://localhost:4200) consuma el API
 const string AngularCorsPolicy = "AngularCorsPolicy";
 builder.Services.AddCors(options =>
 {
@@ -49,9 +46,7 @@ app.UseCors(AngularCorsPolicy);
 app.UseAuthorization();
 app.MapControllers();
 
-// Crea la base de datos (si no existe) y aplica los datos semilla definidos
-// en AppDbContext.OnModelCreating. Se usa EnsureCreated en lugar de
-// migraciones para simplificar la ejecución de esta prueba técnica.
+// Crea la BD si no existe (en vez de usar migraciones, para simplificar)
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();

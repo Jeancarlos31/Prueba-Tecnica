@@ -2,7 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProductosApi.DTOs;
 
-/// <summary>Representación de un producto que se devuelve al cliente.</summary>
 public class ProductDto
 {
     public int Id { get; set; }
@@ -13,7 +12,6 @@ public class ProductDto
     public DateTime CreatedAt { get; set; }
 }
 
-/// <summary>Datos requeridos para crear o editar un producto.</summary>
 public class ProductInputDto
 {
     [Required(ErrorMessage = "El nombre es obligatorio.")]

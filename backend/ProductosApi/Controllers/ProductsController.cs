@@ -52,9 +52,6 @@ public class ProductsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<ProductDto>> CreateProduct(ProductInputDto dto)
     {
-        // [ApiController] valida automáticamente el ModelState y responde
-        // 400 Bad Request con los detalles si el DTO no cumple las anotaciones.
-
         var product = new Product
         {
             Name = dto.Name,

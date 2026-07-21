@@ -3,11 +3,7 @@ import { inject } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { AlertService } from '../services/alert.service';
 
-/**
- * Interceptor funcional que revisa toda respuesta HTTP proveniente del
- * backend. Si el status no es exitoso (fuera del rango 2xx), muestra una
- * alerta al usuario con un mensaje descriptivo según el código HTTP.
- */
+// muestra una alerta cuando el backend responde con algo distinto de 2xx
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const alertService = inject(AlertService);
 
@@ -41,7 +37,6 @@ function extractServerMessage(error: HttpErrorResponse): string | null {
   if (typeof body === 'string') return body;
   if (typeof body.message === 'string') return body.message;
 
-  // ValidationProblemDetails de ASP.NET Core: { title, errors: { campo: [mensajes] } }
   if (body.title) {
     const detalles = body.errors
       ? Object.values(body.errors as Record<string, string[]>).flat().join(' ')

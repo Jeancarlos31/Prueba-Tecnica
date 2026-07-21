@@ -8,11 +8,6 @@ export interface AlertMessage {
   text: string;
 }
 
-/**
- * Servicio central para mostrar alertas al usuario (bootstrap alert).
- * Lo usa el interceptor HTTP para notificar respuestas que no sean
- * exitosas, y también los componentes para confirmar operaciones OK.
- */
 @Injectable({ providedIn: 'root' })
 export class AlertService {
   private readonly messageSubject = new BehaviorSubject<AlertMessage | null>(null);
