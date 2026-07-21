@@ -1,0 +1,13 @@
+@if (alertService.message$ | async; as msg) {
+  <div class="alert-container">
+    <div class="alert alert-{{ msg.type }} alert-dismissible shadow" role="alert">
+      {{ msg.text }}
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Cerrar"
+        (click)="alertService.clear()"
+      ></button>
+    </div>
+  </div>
+}

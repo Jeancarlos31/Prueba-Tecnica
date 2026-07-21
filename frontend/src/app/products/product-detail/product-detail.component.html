@@ -1,0 +1,20 @@
+<div class="container mt-4" style="max-width: 640px;">
+  <a routerLink="/products" class="btn btn-link ps-0">&laquo; Volver al listado</a>
+
+  @if (loading) {
+    <p>Cargando...</p>
+  } @else if (notFound || !product) {
+    <div class="alert alert-warning">No se encontró el producto solicitado.</div>
+  } @else {
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ product.name }}</h3>
+        <h6 class="card-subtitle mb-3 text-muted">Id: {{ product.id }}</h6>
+        <p class="card-text">{{ product.description || 'Sin descripción' }}</p>
+        <p class="mb-1"><strong>Precio:</strong> {{ product.price | currency }}</p>
+        <p><strong>Stock:</strong> {{ product.stock }}</p>
+        <a [routerLink]="['/products', product.id, 'editar']" class="btn btn-warning">Editar</a>
+      </div>
+    </div>
+  }
+</div>
