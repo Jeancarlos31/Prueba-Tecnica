@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -12,6 +12,12 @@ import { AlertService } from '../../core/services/alert.service';
   templateUrl: './product-form.component.html'
 })
 export class ProductFormComponent implements OnInit {
+  private fb = inject(FormBuilder);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private productService = inject(ProductService);
+  private alertService = inject(AlertService);
+
   form = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.maxLength(150)]],
     description: [''],
@@ -22,14 +28,6 @@ export class ProductFormComponent implements OnInit {
   isEditMode = false;
   productId: number | null = null;
   saving = false;
-
-  constructor(
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private productService: ProductService,
-    private alertService: AlertService
-  ) {}
 
   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
