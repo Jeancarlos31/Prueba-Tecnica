@@ -39,12 +39,14 @@ está en `backend/ProductosApi/appsettings.json`:
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ProductosDb;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True"
+  "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=ProductosDb;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True"
 }
 ```
 
-Por defecto apunta a **SQL Server LocalDB** (incluido con Visual Studio en Windows). Si se
-prefiere usar una instancia completa de SQL Server (local o en Docker), reemplazar por algo como:
+Por defecto apunta a una instancia local de **SQL Server Express** llamada `SQLEXPRESS` (nombre
+que usa el instalador de SQL Server Express por defecto). Si tu instancia tiene otro nombre, o
+usas LocalDB (`(localdb)\mssqllocaldb`) o una instancia con usuario/contraseña, ajusta el valor
+según corresponda, por ejemplo:
 
 ```json
 "Server=localhost;Database=ProductosDb;User Id=sa;Password=TuPassword123;TrustServerCertificate=True"
