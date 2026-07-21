@@ -8,7 +8,7 @@ implementa un CRUD completo de productos.
 ```
 backend/
   ProductosApi.sln
-  ProductosApi/            Proyecto Web API (.NET 8, C#)
+  ProductosApi/            Proyecto Web API (.NET 10, C#)
 frontend/                  Proyecto Angular (standalone components)
 ```
 
@@ -29,7 +29,7 @@ en modo Development.
 
 ### Requisitos
 
-- .NET 8 SDK
+- .NET 10 SDK
 - SQL Server (LocalDB, Developer Edition, o una instancia en Docker)
 
 ### Configuración de la base de datos
@@ -112,7 +112,7 @@ La aplicación queda disponible en `http://localhost:4200`.
 
 ## Herramientas y frameworks utilizados (justificación)
 
-- **ASP.NET Core Web API (.NET 8, C#)**: requerido por la prueba; se usó el modelo de hosting
+- **ASP.NET Core Web API (.NET 10, C#)**: requerido por la prueba; se usó el modelo de hosting
   mínimo (`Program.cs`) por ser el estándar actual de .NET para Web APIs, más simple y con menos
   código repetitivo que el modelo clásico de `Startup.cs`.
 - **Entity Framework Core + SQL Server**: ORM oficial de Microsoft, permite trabajar con un
